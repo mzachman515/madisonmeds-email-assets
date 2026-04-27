@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Madison Meds — Image Gallery</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; padding:40px 24px; background:#F4EFF7; font-family:'Inter','Helvetica Neue',Arial,sans-serif; color:#1A1225; }
+  .wrap { max-width:1080px; margin:0 auto; }
+  h1 { font-family:Georgia, serif; font-size:32px; margin:0 0 6px; letter-spacing:-0.5px; }
+  .sub { color:#5B4D70; font-size:14px; margin-bottom:36px; }
+  .cat { background:#fff; border-radius:18px; padding:28px; box-shadow:0 4px 18px rgba(45,27,78,0.06); margin-bottom:24px; }
+  .cat h2 { font-family:Georgia, serif; font-size:22px; margin:0 0 4px; }
+  .cat .meta { font-size:12px; color:#7C3AED; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:18px; font-weight:600; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:14px; }
+  .img { background:#F1EBF7; border-radius:12px; padding:14px; text-align:center; transition:transform 0.15s; }
+  .img:hover { transform:translateY(-2px); }
+  .img img { width:100%; height:120px; object-fit:contain; display:block; margin-bottom:10px; }
+  .img .name { font-size:11px; color:#5B4D70; word-break:break-all; line-height:1.4; }
+  .img .copy { display:block; margin-top:6px; font-size:10px; color:#7C3AED; font-weight:600; cursor:pointer; text-decoration:none; }
+  footer { text-align:center; color:#5B4D70; font-size:12px; margin-top:30px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Madison Meds — Image Gallery</h1>
+  <div class="sub">Click any image to open the full-resolution file. Right-click → Copy image address to use in HTML.</div>
+
+  <div class="cat">
+    <div class="meta">Email Campaigns</div>
+    <h2>Cross-Selling Peptides to Weight Loss</h2>
+    <div class="grid" id="grid-1"></div>
+  </div>
+
+  <footer>Madison Meds · Internal asset library</footer>
+</div>
+
+<script>
+  const baseDir = '/email-campaigns/cross-selling-peptides-to-weight-loss/';
+  const files = [
+    'logo.png',
+    'hero1-overview.png','hero2-ghkcu.png','hero3-glow.png','hero4-hair.png',
+    'hero5-bpc157.png','hero6-cjc.png','hero7-sermorelin.png','hero8-nad.png',
+    'ghkcu.png','glow.png','lushlox.png','regrowfuel.png',
+    'bpc157.png','wolverine.png','cjc1295.png','sermorelin.png',
+    'nad.png','glutathione.png'
+  ];
+  const grid = document.getElementById('grid-1');
+  files.forEach(f => {
+    const url = baseDir + f;
+    const div = document.createElement('div');
+    div.className = 'img';
+    div.innerHTML = `
+      <a href="${url}" target="_blank"><img src="${url}" alt="${f}" loading="lazy"></a>
+      <div class="name">${f}</div>
+      <a class="copy" href="${url}" target="_blank">Open ↗</a>
+    `;
+    grid.appendChild(div);
+  });
+</script>
+</body>
+</html>
